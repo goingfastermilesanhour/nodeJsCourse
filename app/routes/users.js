@@ -10,10 +10,10 @@ router.get('/users',
     userController.responseToJSON('users'),
 );
 
-// router.get('/usersById',
-//     userController.getUsersById);
-//     userController.responseToJSON('users'),
-// );
+router.get('/users/:userId',
+    userController.getUsersById,
+    userController.responseToJSON('users')
+);    
 
 router.post('/users',
     userController.getUsers,
