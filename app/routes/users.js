@@ -21,6 +21,11 @@ router.post('/users',
     userController.responseToJSON('addUsers')
 );
 
+router.put('/users',
+userController.updateUser,
+userController.responseToJSON('users')
+);
+
 router.delete('/delete',
 userController.deleteUserById,
 userController.responseToJSON('users')

@@ -15,6 +15,7 @@ module.exports = {
     getUsers: getUsers,
     getUsersById : getUsersById,
     deleteUserById: deleteUserById,
+    updateUser: updateUser,
     responseToJSON : responseToJSON
 };
 
@@ -38,10 +39,13 @@ function getUsers(req, res, next) {
 function createUser(req, res, next){
 
     const addUser = req.body;
+
     addUser.details = {
         age: req.body.age,
         role: req.body.role
     }
+
+    addUser.documents = JSON.parse(addUser.documents);
 
     const user = new User(req.body);
 
@@ -66,6 +70,16 @@ function getUsersById(req, res, next){
 
 function deleteUserById(req, res, next){
     User.deleteOne({_id: '5fcf3aa2c640c42f28275d88'}, function(err, result){
+        if(err){
+            return res.json(err)
+        }
+        req.resources.users = result;
+        return next();
+    })
+}
+
+function updateUser(req,res,next){
+    User.update({_id: req.params.userId}, function(err,result){
         if(err){
             return res.json(err)
         }

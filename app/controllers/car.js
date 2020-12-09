@@ -18,7 +18,7 @@ function createCar(req, res, next){
         return next();
     })
 }
-
+//ca sa leg car de users: 
 function getCar(req, res, next){
     Car.find(function(err, result){
     if(err){
@@ -55,4 +55,18 @@ function responseToJSON(prop){
 
         return res.json(req.resources[prop]);
     }
+}
+
+function getCar(req,res,next){
+Car
+.find()
+//pt join in sine: 1. cheia de pe cars e User (la ref)
+.populate('user', 'email name')
+.exec(function(err, result){
+    if(err){
+        return res.json(err)
+    }
+    req.resources.car = result;
+    return next();
+})
 }

@@ -18,7 +18,11 @@ const userSchema = new Schema(
         details: {
             age: { type: Number },
             role: { type: String }
-        }
+        },
+        documents: [ {
+            name: { type: String },
+            docType: { type: String }
+        }]
         // isActive: {
         //     type: Boolean
         // }

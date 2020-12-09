@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const ObjectId = mongoose.ObjectId;
 
 const carSchema = new Schema(
     {
+
         name: {
             type: String,
             required: true,
@@ -10,6 +12,11 @@ const carSchema = new Schema(
         },
         color: {
             type: String,
+            required: true
+        },
+        user: {
+            type: ObjectId,
+            ref: 'user',
             required: true
         }
     }
