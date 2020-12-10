@@ -16,6 +16,7 @@ const userSchema = new Schema(
             unique: true
         },
         details: {
+           
             age: { type: Number },
             role: { type: String }
         },

@@ -50,6 +50,12 @@ function createUser(req, res, next){
     const user = new User(req.body);
 
     user.save(function(err, result){
+        if(err){
+            console.log('err', err)
+            const err = createErrorUsers()
+            err.statusCode = 400;
+            return next(err)
+        }
         req.resources.users = result;
         return next();
     })

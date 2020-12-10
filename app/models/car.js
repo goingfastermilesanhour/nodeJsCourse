@@ -17,7 +17,7 @@ const carSchema = new Schema(
         user: {
             type: ObjectId,
             ref: 'user',
-            required: true
+            required: false
         }
     }
 );

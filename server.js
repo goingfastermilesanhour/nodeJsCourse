@@ -10,9 +10,23 @@ require('./config/mongoose').initMongoose();
 require('./config/express').initExpress(app);
 require('./config/routes').initRoutes(app);
 
+app.all('*', function(req, res, next){
+    console.log('final router does not exist');
+    // return res.json({test:1});
+    return res.status(404).json({
+        status: 'fail',
+        message: `not found ${req.url} on server` })
+}   
+)
 
 const helperCtrl = require('./helper.js');
 
+app.use(function(err, req, res, next){
+    return res.status(err && err.statusCode || 400).json({
+        status: 'error',
+        message: err & err.message || 'Default message'
+    })
+});
 
 app.listen(config.PORT, function(){
     console.log(`API on port ${config.PORT}`);

@@ -11,7 +11,7 @@ function initRoutes(app)
     const routesPath = path.join(__dirname, '../app/routes');
 
     console.log(routesPath);
-    const routes = ['users', 'car'];
+    const routes = ['users', 'car', 'uploads'];
 
     routes.forEach(function(route){
         console.log("route", route);
