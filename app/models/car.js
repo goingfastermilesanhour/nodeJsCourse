@@ -21,4 +21,5 @@ const carSchema = new Schema(
         }
     }
 );
+// at user line 17, ref is 'user' from module.exports = mognoose.model('user' etc.) and objectId is called from mongoose.ObjectId
 module.exports = mongoose.model('car', carSchema, 'cars'); // 3 parametri nume model, numele schemei, si collectionul din DB mongoose/

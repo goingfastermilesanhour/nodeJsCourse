@@ -60,6 +60,7 @@ function responseToJSON(prop){
 function getCar(req,res,next){
 Car
 .find()
+.sort({name: 1})
 //pt join in sine: 1. cheia de pe cars e User (la ref)
 .populate('user', 'email name')
 .exec(function(err, result){
